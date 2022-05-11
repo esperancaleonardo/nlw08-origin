@@ -11,11 +11,20 @@
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
-  --brand-beige: #fffaf1;
-  --brand-green-light: #dce9e2;
+  --brand-beige: hsl(39, 100%, 97%);
+  --brand-hover: hsl(170, 100%, 14%);
+
+  --brand-light: hsl(148, 23%, 89%);
+
+  --bg-light: hsl(180, 14%, 97%);
+
   --nav-height: 7.2rem;
 
   font-size: 62.5%; /* 1rem = 10px */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -31,6 +40,8 @@ body {
   overflow: overlay;
 
   text-align: center;
+
+  background-color: var(--bg-light);
 }
 
 .wrapper {
@@ -43,21 +54,37 @@ body {
 
 ul {
   list-style: none;
+  padding-inline-start: 0;
 }
 
-/* ============================================================== HEADER */
-
-header {
-  margin-top: calc(4.1rem + var(--nav-height));
+img {
+  max-width: 100%;
 }
 
-header h4 {
+section {
+  padding-block: 10rem;
+}
+
+section header h4 {
   font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
   color: var(--primary-color);
+
+  text-transform: uppercase;
+
   margin-bottom: 1.6rem;
 }
 
-header h1 {
+section header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+
+  color: var(--headline);
+}
+
+section header h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
@@ -65,16 +92,14 @@ header h1 {
   margin-bottom: 2.4rem;
 }
 
-header p {
-  font-size: 1.8rem;
-  line-height: 150%;
-  font-weight: 400;
+section .content p {
   color: var(--paragraph);
-
-  margin-bottom: 3.2rem;
+  line-height: 150%;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
-header button {
+.button {
   background: var(--primary-color);
 
   border: none;
@@ -82,8 +107,8 @@ header button {
 
   margin-bottom: 6rem;
 
-  height: 6.2rem;
-  width: 26.3rem;
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
 
   color: white;
   font-size: 1.4rem;
@@ -95,8 +120,26 @@ header button {
   justify-content: center;
   gap: 1.6rem;
 
-  margin-right: auto;
-  margin-left: auto;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: var(--brand-hover);
+  transform: background 200ms;
+}
+/* ============================================================== HOME */
+
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home p {
+  font-size: 1.8rem;
+  line-height: 150%;
+  font-weight: 400;
+  color: var(--paragraph);
+
+  margin-bottom: 3.2rem;
 }
 
 .stats {
@@ -107,7 +150,7 @@ header button {
   margin-inline: auto;
 
   background-color: var(--brand-beige);
-  border: 1px solid var(--brand-green-light);
+  border: 1px solid var(--brand-light);
   border-radius: 0.6rem;
 
   display: flex;
@@ -130,23 +173,28 @@ header button {
   line-height: 150%;
 }
 
-header img {
+#home img {
   width: 26.4rem;
   display: block;
   margin-inline: auto;
 }
 
-header::before {
+#home::before {
   content: '';
   width: 100%;
   height: calc(108rem + var(--nav-height));
   display: block;
-  background-color: var(--brand-green-light);
+  background-color: var(--brand-light);
 
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+#home .button {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /* ============================================================== NAV */
@@ -158,8 +206,9 @@ nav {
 
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100vw;
+
+  z-index: 100;
 }
 
 nav .wrapper {
@@ -170,11 +219,6 @@ nav .wrapper {
 
 nav.scroll {
   background-color: var(--primary-color);
-  width: 100vw;
-}
-
-nav.scroll svg:nth-child(1) path {
-  fill: white;
 }
 
 nav.scroll button path {
@@ -187,7 +231,7 @@ nav button {
   cursor: pointer;
 }
 
-/* =========================================== MENU EXPANDEDE*/
+/* =========================================== MENU EXPANDED*/
 .menu,
 .close-menu,
 body.menu-expanded .open-menu {
@@ -206,7 +250,11 @@ body.menu-expanded {
 }
 
 body.menu-expanded > :not(nav) {
-  display: none;
+  visibility: hidden;
+}
+
+.menu {
+  transform: translateY(100%);
 }
 
 body.menu-expanded .menu {
@@ -218,10 +266,9 @@ body.menu-expanded .menu {
   width: 100vw;
   height: 100vh;
   padding-top: var(--nav-height);
-}
 
-body.menu-expanded nav {
-  position: relative;
+  transition: transform 200ms;
+  transform: translateY(0%);
 }
 
 .menu ul {
@@ -268,6 +315,12 @@ body.menu-expanded nav {
   margin-bottom: 8rem;
 }
 
+.menu .button:hover {
+  background-color: var(--brand-hover);
+  color: white;
+  filter: brightness(1.5);
+}
+
 .social-links {
   display: flex;
   align-items: center;
@@ -281,10 +334,119 @@ body.menu-expanded nav button {
   z-index: 100;
 }
 
-body.menu-expanded .logo path {
-  fill: white;
-}
-
 body.menu-expanded button path {
   stroke: white;
+}
+
+/* ============================================================== SERVICES */
+
+#disciplinas h2 {
+  margin-bottom: 6rem;
+}
+
+#disciplinas .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.card {
+  padding: 2.4rem;
+  text-align: left;
+
+  background: white;
+  border: 1px solid var(--brand-light);
+  border-radius: 0.6rem;
+}
+
+.card h3 {
+  margin-block: 1.6rem;
+}
+
+/* ============================================================== ABOUT */
+#about {
+  text-align: left;
+  background-color: var(--brand-beige);
+}
+
+#about h2 {
+  margin-bottom: 2.4rem;
+}
+
+#about .content p {
+  margin-top: 2.4rem;
+  margin-bottom: 6rem;
+}
+
+/* ============================================================== CONTACT */
+
+#contact {
+  text-align: left;
+}
+
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#contact ul {
+  margin-bottom: 3.2rem;
+}
+
+/* ============================================================== CONTACT */
+footer {
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+  text-align: left;
+
+  color: white;
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .logo svg {
+  width: 23.6rem;
+  height: 3.1rem;
+}
+
+footer p {
+  color: var(--brand-beige);
+  line-height: 2;
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+  justify-content: flex-start;
+}
+
+/* ============================================================== CONTACT */
+#backToTop {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(100%);
+  transition: all 200ms ease-in-out;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
