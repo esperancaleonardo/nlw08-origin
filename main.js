@@ -9,8 +9,8 @@ function onScroll() {
   activateMenuCurrentSection(home)
   activateMenuCurrentSection(disciplinas)
   activateMenuCurrentSection(about)
-  activateMenuCurrentSection(contact)
   activateMenuCurrentSection(depoimentos)
+  activateMenuCurrentSection(contact)
 }
 
 function openMenu() {
