@@ -5,6 +5,11 @@ function onScroll() {
   } else {
     navigation.classList.remove('scroll')
   }
+
+  activateMenuCurrentSection(home)
+  activateMenuCurrentSection(disciplinas)
+  activateMenuCurrentSection(about)
+  activateMenuCurrentSection(contact)
 }
 
 function openMenu() {
@@ -20,6 +25,29 @@ function onScrollB2T() {
     backToTop.classList.add('show')
   } else {
     backToTop.classList.remove('show')
+  }
+}
+
+function activateMenuCurrentSection(section) {
+  const target = scrollY + innerHeight / 2
+
+  const top = section.offsetTop
+  const height = section.offsetHeight
+  const bottom = top + height
+
+  const topPassou = target >= top
+  const bottomPassou = bottom <= target
+
+  const boundaries = topPassou && !bottomPassou
+
+  const sectionId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove('active')
+  if (boundaries) {
+    menuElement.classList.add('active')
+    console.log(sectionId)
+    console.log(menuElement.classList)
   }
 }
 

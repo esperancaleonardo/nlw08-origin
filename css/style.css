@@ -52,6 +52,14 @@ body {
   padding-inline: 2.4rem;
 }
 
+.col-a {
+  grid-area: A;
+}
+
+.col-b {
+  grid-area: B;
+}
+
 ul {
   list-style: none;
   padding-inline-start: 0;
@@ -127,9 +135,11 @@ section .content p {
   background-color: var(--brand-hover);
   transform: background 200ms;
 }
+
 /* ============================================================== HOME */
 
 #home {
+  padding-block: 0;
   padding-top: calc(4.1rem + var(--nav-height));
 }
 
@@ -350,6 +360,10 @@ body.menu-expanded button path {
   stroke: white;
 }
 
+body.menu-expanded .logo svg:nth-child(1) path {
+  fill: white;
+}
+
 /* ============================================================== SERVICES */
 
 #disciplinas h2 {
@@ -379,6 +393,10 @@ body.menu-expanded button path {
 #about {
   text-align: left;
   background-color: var(--brand-beige);
+}
+
+#about img {
+  background-color: #e1dede;
 }
 
 #about h2 {
@@ -478,6 +496,15 @@ footer .social-links {
 
   body {
     overflow: auto;
+  }
+
+  section {
+    padding-block: 16rem;
+  }
+
+  section header h2 {
+    font-size: 4rem;
+    line-height: 5.2rem;
   }
 
   /* ============= NAVIGATION ============= */
@@ -602,11 +629,11 @@ footer .social-links {
   /* ============= HOME ============= */
 
   #home {
-    padding-top: var(--nav-height);
+    padding-top: calc(20rem + var(--nav-height));
   }
 
   #home::before {
-    height: calc(76% - var(--nav-height));
+    height: calc(74% + var(--nav-height));
   }
 
   #home .wrapper {
@@ -614,22 +641,22 @@ footer .social-links {
     grid-template-areas: 'A B' 'C C';
   }
   #home .col-a {
-    grid-area: A;
     align-self: center;
     text-align: left;
   }
 
+  #home .col-b {
+    align-self: center;
+  }
+
   #home .button {
-    margin: 0;
+    margin-inline: 0;
+    margin-top: 0;
+    margin-bottom: 4rem;
   }
 
   #home img {
-    height: 55rem;
     width: 44.2rem;
-  }
-
-  #home .col-b {
-    grid-area: B;
   }
 
   #home h1 {
@@ -654,5 +681,88 @@ footer .social-links {
 
   #home .stats .stat {
     flex: 1;
+  }
+
+  /* ============= DISCIPLINAS ============= */
+
+  #disciplinas h2 {
+    width: 47rem;
+    margin-inline: auto;
+  }
+
+  #disciplinas .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #disciplinas .card {
+    width: 30%;
+    flex-grow: 1;
+    gap: 4rem;
+  }
+
+  /* ============= ABOUT ============= */
+
+  #about .wrapper {
+    grid-template-columns: 50rem 1fr;
+    grid-template-areas: 'B A';
+  }
+
+  #about col-a {
+    align-self: center;
+    gap: 6.7rem;
+  }
+
+  #about img {
+    background-color: #e1dede;
+    transform: rotate(90deg);
+  }
+
+  #about .content p {
+    margin-bottom: 0;
+  }
+
+  /* ============= CONTACT ============= */
+
+  #contact .wrapper {
+    grid-template-columns: 1fr 57.5rem;
+    grid-template-areas: 'A B';
+  }
+
+  #contact h2 {
+    width: 40.4rem;
+  }
+
+  #contact col-a {
+    align-self: center;
+    gap: 6.7rem;
+  }
+
+  #contact img {
+    width: 45rem;
+  }
+
+  /* ============= FOOTER ============= */
+
+  footer {
+    padding-block: 8rem;
+  }
+
+  footer .wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'A B';
+  }
+
+  footer p {
+    margin-bottom: 0;
+  }
+
+  footer .col-a {
+    align-self: center;
+  }
+
+  footer .col-b {
+    align-self: center;
+    justify-self: flex-end;
   }
 }
