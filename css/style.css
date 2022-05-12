@@ -500,6 +500,10 @@ footer .social-links {
   opacity: 0;
   visibility: hidden;
 
+  border-top: 1px solid white;
+  border-top-left-radius: 70%;
+  border-top-right-radius: 70%;
+
   transform: translateX(100%);
   transition: all 200ms ease-in-out;
 }

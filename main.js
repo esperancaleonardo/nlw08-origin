@@ -42,6 +42,7 @@ function activateMenuCurrentSection(section) {
   const boundaries = topPassou && !bottomPassou
 
   const sectionId = section.getAttribute('id')
+
   const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
 
   menuElement.classList.remove('active')
