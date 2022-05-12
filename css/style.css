@@ -364,13 +364,38 @@ body.menu-expanded .logo svg:nth-child(1) path {
   fill: white;
 }
 
-/* ============================================================== SERVICES */
+/* ============================================================== DISCIPLINAS */
 
 #disciplinas h2 {
   margin-bottom: 6rem;
 }
 
 #disciplinas .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.card {
+  padding: 2.4rem;
+  text-align: left;
+
+  background: white;
+  border: 1px solid var(--brand-light);
+  border-radius: 0.6rem;
+}
+
+.card h3 {
+  margin-block: 1.6rem;
+}
+
+/* ============================================================== DEPOIMENTOS */
+
+#depoimentos h2 {
+  margin-bottom: 6rem;
+}
+
+#depoimentos .cards {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -696,6 +721,24 @@ footer .social-links {
   }
 
   #disciplinas .card {
+    width: 30%;
+    flex-grow: 1;
+    gap: 4rem;
+  }
+
+  /* ============= DEPOIMENTOS ============= */
+
+  #depoimentos h2 {
+    width: 47rem;
+    margin-inline: auto;
+  }
+
+  #depoimentos .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #depoimentos .card {
     width: 30%;
     flex-grow: 1;
     gap: 4rem;

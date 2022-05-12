@@ -10,6 +10,7 @@ function onScroll() {
   activateMenuCurrentSection(disciplinas)
   activateMenuCurrentSection(about)
   activateMenuCurrentSection(contact)
+  activateMenuCurrentSection(depoimentos)
 }
 
 function openMenu() {
